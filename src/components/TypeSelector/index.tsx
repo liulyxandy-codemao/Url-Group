@@ -1,34 +1,30 @@
-import { TFunction, use } from "i18next";
-import { RadioGroup, Radio } from '@douyinfe/semi-ui';
+import { TFunction } from "i18next";
 import { useState } from "react";
-
+import GridActive from "../Icons/grid_active.tsx"
+import RowActive from "../Icons/row_active.tsx"
+import GridInactive from "../Icons/grid_inactive.tsx"
+import RowInactive from "../Icons/row_inactive.tsx"
+import { Space } from "@douyinfe/semi-ui";
 export function TypeSelector(props: {
     onChange: (type: "grid" | "row") => void,
     trans: TFunction<"translation", undefined>,
     defaultSection: "grid" | "row"
 }) {
     const [type, setType] = useState<"grid" | "row">(props.defaultSection);
-    function trigger(){
-        props.onChange(type);
+    function trigger(t: "grid" | "row") {
+        setType(t); 
+        props.onChange(t);
     }
     return (
-        <RadioGroup type='pureCard' defaultValue={"grid"} direction='horizontal' aria-label="单选组合示例" onChange={(value) => {setType(value.target.value);trigger()}}>
-            <Radio value={"grid"} extra={
-                type === "grid" ? 
-                <img src="/grid.svg" width={104}/>
-                :
-                <img src="/grid_inactive.svg" width={104}/>
-            } style={{ width: 138 }}>
-                网格
-            </Radio>
-            <Radio value={"row"} extra={
-                type === "row" ? 
-                <img src="/row.svg" width={104}/>
-                :
-                <img src="/row_inactive.svg" width={104}/>
-            } style={{ width: 138 }}>
-                列表
-            </Radio>
-        </RadioGroup>
+        type == 'grid' ?
+            <Space style={{ cursor: 'pointer' }}>
+                <GridActive />
+                <div onClick={() => { trigger('row') }}><RowInactive /></div>
+            </Space>
+            :
+            <Space style={{ cursor: 'pointer' }}>
+                <div onClick={() => { trigger('grid') }}><GridInactive /></div>
+                <RowActive />
+            </Space>
     )
 }
