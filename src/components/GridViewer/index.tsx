@@ -1,7 +1,7 @@
 import { Avatar, Button, ButtonGroup, List, Space } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
-import { toNormalText } from "../../utils";
+import { toMinText, toNormalText } from "../../utils";
 
 interface IUrlGroupConfig {
     type: 'grid' | 'row',
@@ -45,15 +45,15 @@ export function GridViewer(props: {
     return (
         <List
             grid={{
-                gutter: 12,
-                span: 6,
+                gutter: 64,
+                span: 8,
             }}
             dataSource={data}
             renderItem={item => (
                 <List.Item onClick={() => { window.open(item.link) }}>
-                    <Space vertical style={{cursor: "pointer"}}>
+                    <Space vertical style={{ cursor: "pointer" }}>
                         <Avatar src={item.icon}></Avatar>
-                        <p>{item.text}</p>
+                        <p>{toMinText(6, item.text)}</p>
                     </Space>
                 </List.Item>
             )}

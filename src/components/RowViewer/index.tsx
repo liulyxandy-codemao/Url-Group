@@ -1,7 +1,7 @@
 import { Avatar, Button, ButtonGroup, List } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
-import { toNormalText } from "../../utils";
+import { toMinText, toNormalText } from "../../utils";
 
 interface IUrlGroupConfig {
     type: 'grid' | 'row',
@@ -48,7 +48,7 @@ export function RowViewer(props: {
             renderItem={item => (
                 <List.Item
                     header={<Avatar src={item.icon}></Avatar>}
-                    main={<p>{item.text}</p>}
+                    main={<p>{toMinText(12, item.text)}</p>}
                     extra={
                         <Button onClick={() => { window.open(item.link) }}>打开</Button>
                     }
