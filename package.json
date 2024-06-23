@@ -1,0 +1,32 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "output": "dist",
+  "dependencies": {
+    "@douyinfe/semi-foundation": "^2.58.0",
+    "@douyinfe/semi-ui": "^2.58.0",
+    "@lark-base-open/js-sdk": "https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/@lark-base-open-js-sdk-0.4.0-alpha.12.tgz",
+    "@semi-bot/semi-theme-feishu-dashboard": "^1.0.4",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "classnames": "^2.5.1",
+    "dayjs": "^1.11.11",
+    "i18next": "^23.11.4",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^14.1.1",
+    "react-router-dom": "^6.23.1",
+    "reset-css": "^5.0.2",
+    "sass": "^1.77.1",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-semi-theming": "^0.1.0"
+  }
+}

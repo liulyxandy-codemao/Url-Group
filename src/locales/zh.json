@@ -1,0 +1,11 @@
+{
+  "label.display.viewtype": "类型",
+  "label.display.viewtype.grid": "网格",
+  "label.display.viewtype.row": "列表",
+  "label.display.select.table": "选择数据表",
+  "label.display.select.view": "选择视图",
+  "label.display.select.title": "标题列",
+  "label.display.select.link": "链接列",
+  "label.display.select.icon": "图标列",
+  "confirm": "确认"
+}
