@@ -19,9 +19,7 @@ interface IViewerData {
 export function RowViewer(props: {
     config: ICountDownConfig
 }) {
-    console.log(6)
     let [data, setData] = useState<IViewerData[]>([])
-    console.log(props)
     useEffect(() => {
         async function fetchData() {
             let data: IViewerData[] = []
@@ -39,7 +37,6 @@ export function RowViewer(props: {
                     link: toNormalText(link)
                 })
             }
-            console.log(data)
             setData(data)
         }
 
@@ -55,6 +52,7 @@ export function RowViewer(props: {
                     extra={
                         <Button onClick={() => { window.open(item.link) }}>打开</Button>
                     }
+                    align="center"
                 />
             )}
         />

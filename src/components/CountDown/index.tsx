@@ -13,6 +13,7 @@ import { TableSelector } from '../TableSelector'
 import { ViewSelector } from '../ViewSelector';
 import { CategorySelector } from '../CategorySelector';
 import { RowViewer } from '../RowViewer';
+import { GridViewer } from '../GridViewer';
 interface ICountDownConfig {
   type: 'grid' | 'row',
   table: string | null,
@@ -87,7 +88,7 @@ export default function CountDown() {
           config.type == "row" ?
           <RowViewer config={config} />
           :
-          <RowViewer config={config} />
+          <GridViewer config={config} />
         }
       </div>
       {
