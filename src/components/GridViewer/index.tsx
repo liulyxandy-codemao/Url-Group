@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
 import { toNormalText } from "../../utils";
 
-interface ICountDownConfig {
+interface IUrlGroupConfig {
     type: 'grid' | 'row',
     table: string | null,
     view: string | null,
@@ -17,7 +17,7 @@ interface IViewerData {
     link: string
 }
 export function GridViewer(props: {
-    config: ICountDownConfig
+    config: IUrlGroupConfig
 }) {
     let [data, setData] = useState<IViewerData[]>([])
     useEffect(() => {

@@ -14,7 +14,7 @@ import { ViewSelector } from '../ViewSelector';
 import { CategorySelector } from '../CategorySelector';
 import { RowViewer } from '../RowViewer';
 import { GridViewer } from '../GridViewer';
-interface ICountDownConfig {
+interface IUrlGroupConfig {
   type: 'grid' | 'row',
   table: string | null,
   view: string | null,
@@ -25,12 +25,12 @@ interface ICountDownConfig {
 
 
 
-export default function CountDown() {
+export default function UrlGroup() {
 
   const { t, i18n } = useTranslation();
 
   // create时的默认配置
-  const [config, setConfig] = useState<ICountDownConfig>({
+  const [config, setConfig] = useState<IUrlGroupConfig>({
     type: 'grid',
     table: null,
     view: null,
@@ -101,8 +101,8 @@ export default function CountDown() {
 
 
 function ConfigPanel(props: {
-  config: ICountDownConfig,
-  setConfig: React.Dispatch<React.SetStateAction<ICountDownConfig>>,
+  config: IUrlGroupConfig,
+  setConfig: React.Dispatch<React.SetStateAction<IUrlGroupConfig>>,
   t: TFunction<"translation", undefined>,
 }) {
   const { config, setConfig, t } = props;
