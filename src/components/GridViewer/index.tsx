@@ -2,7 +2,7 @@ import { Avatar, Button, ButtonGroup, List, Space } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
 import { toMinText, toNormalText } from "../../utils";
-
+import './grid.scss'
 interface IUrlGroupConfig {
     type: 'grid' | 'row',
     table: string | null,
@@ -45,14 +45,14 @@ export function GridViewer(props: {
     return (
         <List
             grid={{
-                gutter: 64,
+                gutter: 32,
                 span: 8,
             }}
             dataSource={data}
             renderItem={item => (
-                <List.Item onClick={() => { window.open(item.link) }}>
+                <List.Item onClick={() => { window.open(item.link) }} style={{paddingTop: 16}}>
                     <Space vertical style={{ cursor: "pointer" }}>
-                        <Avatar src={item.icon}></Avatar>
+                        <Avatar shape="square" style={{borderRadius: 12}} src={item.icon}></Avatar>
                         <p>{toMinText(6, item.text)}</p>
                     </Space>
                 </List.Item>

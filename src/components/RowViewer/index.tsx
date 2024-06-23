@@ -2,7 +2,7 @@ import { Avatar, Button, ButtonGroup, List } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
 import { toMinText, toNormalText } from "../../utils";
-
+import './row.scss'
 interface IUrlGroupConfig {
     type: 'grid' | 'row',
     table: string | null,
@@ -47,10 +47,10 @@ export function RowViewer(props: {
             dataSource={data}
             renderItem={item => (
                 <List.Item
-                    header={<Avatar src={item.icon}></Avatar>}
+                    header={<Avatar shape="square" style={{borderRadius: 12}} src={item.icon}></Avatar>}
                     main={<p>{toMinText(12, item.text)}</p>}
                     extra={
-                        <Button onClick={() => { window.open(item.link) }}>打开</Button>
+                        <Button theme='solid' size='small' type='primary' onClick={() => { window.open(item.link) }}>打开</Button>
                     }
                     align="center"
                 />
