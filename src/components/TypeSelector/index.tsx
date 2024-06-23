@@ -8,8 +8,11 @@ export function TypeSelector(props: {
     defaultSection: "grid" | "row"
 }) {
     const [type, setType] = useState<"grid" | "row">(props.defaultSection);
+    function trigger(){
+        props.onChange(type);
+    }
     return (
-        <RadioGroup type='pureCard' defaultValue={"grid"} direction='horizontal' aria-label="单选组合示例" onChange={(value) => {setType(value.target.value)}}>
+        <RadioGroup type='pureCard' defaultValue={"grid"} direction='horizontal' aria-label="单选组合示例" onChange={(value) => {setType(value.target.value);trigger()}}>
             <Radio value={"grid"} extra={
                 type === "grid" ? 
                 <img src="/grid.svg" width={104}/>
