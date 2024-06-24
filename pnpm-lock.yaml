@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.58.0
     version: 2.58.0(react-dom@18.3.1)(react@18.3.1)
   '@lark-base-open/js-sdk':
-    specifier: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/@lark-base-open-js-sdk-0.4.0-alpha.12.tgz
-    version: '@lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/@lark-base-open-js-sdk-0.4.0-alpha.12.tgz'
+    specifier: ^0.4.0
+    version: 0.4.0
   '@semi-bot/semi-theme-feishu-dashboard':
     specifier: ^1.0.4
     version: 1.0.4
@@ -664,6 +664,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: false
+
+  /@lark-base-open/js-sdk@0.4.0:
+    resolution: {integrity: sha512-Q4mU3xPFSkPKKjfWg9EYnXakuhH15E0eRvQmFbc/3WRbZhCfflNdppoUUX57sE+aObQj5j+ZudM4RigRWLFxVw==}
     dev: false
 
   /@remix-run/router@1.16.1:
@@ -1573,10 +1577,4 @@ packages:
 
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
-    dev: false
-
-  '@lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/@lark-base-open-js-sdk-0.4.0-alpha.12.tgz':
-    resolution: {tarball: https://lf3-static.bytednsdoc.com/obj/eden-cn/jjjpceh7nulojvhj/@lark-base-open-js-sdk-0.4.0-alpha.12.tgz}
-    name: '@lark-base-open/js-sdk'
-    version: 0.4.0-alpha.12
     dev: false
