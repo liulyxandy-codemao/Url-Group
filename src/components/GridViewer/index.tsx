@@ -44,8 +44,9 @@ export function GridViewer(props: {
     }, [props]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
     return (
         <List
+            emptyContent={"无数据"}
             grid={{
-                gutter: 32,
+                gutter: 8,
                 span: 8,
             }}
             dataSource={data}

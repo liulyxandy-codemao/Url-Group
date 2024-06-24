@@ -1,5 +1,5 @@
 import { TFunction } from "i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GridActive from "../Icons/grid_active.tsx"
 import RowActive from "../Icons/row_active.tsx"
 import GridInactive from "../Icons/grid_inactive.tsx"
@@ -11,6 +11,9 @@ export function TypeSelector(props: {
     defaultSection: "grid" | "row"
 }) {
     const [type, setType] = useState<"grid" | "row">(props.defaultSection);
+    useEffect(()=>{
+        setType(props.defaultSection)
+    },[props.defaultSection])
     function trigger(t: "grid" | "row") {
         setType(t); 
         props.onChange(t);

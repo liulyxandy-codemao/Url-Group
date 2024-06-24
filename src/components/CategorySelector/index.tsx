@@ -31,7 +31,10 @@ export function CategorySelector(props: CategorySelectorProps) {
     }, [props.tableId, props.viewId]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
 
     let { onChange, defaultSection } = props;
-
+    const [section, setSection] = useState(String(defaultSection));
+    useEffect(()=>{
+        setSection(String(defaultSection))
+    }, [defaultSection])
     function changeHandle(r: string | number | any[] | Record<string, any> | undefined){
         r = r as string
         onChange(r)
@@ -43,7 +46,7 @@ export function CategorySelector(props: CategorySelectorProps) {
             style={{ width: 300 }}
             optionList={optionList}
             onChange={changeHandle}
-            defaultValue={defaultSection}
+            value={section}
         />
     );
 }
