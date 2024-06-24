@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
 import { toMinText, toNormalText } from "../../utils";
 import './grid.scss'
+import { TFunction } from "i18next";
 interface IUrlGroupConfig {
     type: 'grid' | 'row',
     table: string | null,
@@ -17,7 +18,8 @@ interface IViewerData {
     link: string
 }
 export function GridViewer(props: {
-    config: IUrlGroupConfig
+    config: IUrlGroupConfig,
+    trans: TFunction<"translation", undefined>
 }) {
     let [data, setData] = useState<IViewerData[]>([])
     useEffect(() => {
@@ -44,7 +46,7 @@ export function GridViewer(props: {
     }, [props]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
     return (
         <List
-            emptyContent={"无数据"}
+            emptyContent={props.trans("label.empty")}
             grid={{
                 gutter: 8,
                 span: 8,

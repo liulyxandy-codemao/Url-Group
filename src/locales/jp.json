@@ -1,0 +1,12 @@
+{
+  "label.display.viewtype": "ビュータイプ",
+  "label.display.viewtype.grid": "グリッド",
+  "label.display.viewtype.row": "リスト",
+  "label.display.select.table": "テーブルの選択",
+  "label.display.select.view": "ビューの選択",
+  "label.display.select.title": "タイトル列",
+  "label.display.select.link": "リンク列",
+  "label.display.select.icon": "アイコン列",
+  "label.empty": "データなし",
+  "confirm": "確認"
+}

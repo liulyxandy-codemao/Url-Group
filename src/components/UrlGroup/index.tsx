@@ -86,9 +86,9 @@ export default function UrlGroup() {
       <div className='content'>
         {
           config.type == "row" ?
-          <RowViewer config={config} />
+          <RowViewer config={config} trans={t} />
           :
-          <GridViewer config={config} />
+          <GridViewer config={config} trans={t} />
         }
       </div>
       {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
 import { toMinText, toNormalText } from "../../utils";
 import './row.scss'
+import { TFunction } from "i18next";
 interface IUrlGroupConfig {
     type: 'grid' | 'row',
     table: string | null,
@@ -17,7 +18,8 @@ interface IViewerData {
     link: string
 }
 export function RowViewer(props: {
-    config: IUrlGroupConfig
+    config: IUrlGroupConfig,
+    trans: TFunction<"translation", undefined>
 }) {
     let [data, setData] = useState<IViewerData[]>([])
     useEffect(() => {
@@ -44,6 +46,7 @@ export function RowViewer(props: {
     }, [props]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
     return (
         <List
+            emptyContent={props.trans("label.empty")}
             dataSource={data}
             renderItem={item => (
                 <List.Item

@@ -1,12 +1,20 @@
-import i18n from 'i18next';
+import i18n, { t } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { bitable } from '@lark-base-open/js-sdk';
 import translationZH from './zh.json';
+import translationEN from './en.json';
+import translationJP from './jp.json';
 
 const resources = {
   zh: {
-    translation: translationZH,
+    translation: translationZH
+  },
+  en: {
+    translation: translationEN
+  },
+  jp: {
+    translation: translationJP
   }
 };
 

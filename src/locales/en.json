@@ -1,0 +1,12 @@
+{
+  "label.display.viewtype": "View Type",
+  "label.display.viewtype.grid": "Grid",
+  "label.display.viewtype.row": "List",
+  "label.display.select.table": "Select Table",
+  "label.display.select.view": "Select View",
+  "label.display.select.title": "Title Column",
+  "label.display.select.link": "Link Column",
+  "label.display.select.icon": "Icon Column",
+  "label.empty": "No Data Available",
+  "confirm": "Confirm"
+}

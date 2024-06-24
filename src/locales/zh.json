@@ -7,5 +7,6 @@
   "label.display.select.title": "标题列",
   "label.display.select.link": "链接列",
   "label.display.select.icon": "图标列",
+  "label.empty": "暂无数据",
   "confirm": "确认"
 }
