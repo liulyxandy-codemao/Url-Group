@@ -1,6 +1,6 @@
 import './style.scss';
 import React from 'react';
-import { dashboard, DashboardState, IConfig } from "@lark-base-open/js-sdk";
+import { bitable, dashboard, DashboardState, IConfig } from "@lark-base-open/js-sdk";
 import { Button } from '@douyinfe/semi-ui';
 import { useState, useEffect, useRef } from 'react';
 import { useConfig } from '../../hooks';
@@ -78,12 +78,28 @@ export default function UrlGroup() {
 
   useConfig(updateConfig)
 
+  let [light, setIsLight] = useState(document.body.getAttribute('theme-mode') != 'dark')
+  useEffect(() => {
+    let theme = document.body.getAttribute('theme-mode')
+    if (theme == 'dark') {
+      setIsLight(false)
+    }
+    else {
+      setIsLight(true)
+    }
+    bitable.bridge.onThemeChange((e) => {
+      setIsLight(e.data.theme.toLocaleLowerCase() != 'dark')
+    })
+  }, [document.body.getAttribute('theme-mode')])
+
   return (
     <main className={classnames({
       'main-config': isConfig,
       'main': true,
     })}>
-      <div className='content'>
+      <div className='content' style={light ? {} : {
+        scrollbarColor: "#333 #222"
+      }}>
         {
           config.type == "row" ?
             <RowViewer config={config} trans={t} />
@@ -125,7 +141,7 @@ function ConfigPanel(props: {
           </div>
         }>
           <IconSelect
-            onChange={(e: 'grid'|'row') => {
+            onChange={(e: 'grid' | 'row') => {
               setConfig({
                 ...config,
                 type: e
