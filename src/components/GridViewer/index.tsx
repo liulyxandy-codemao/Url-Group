@@ -22,6 +22,19 @@ export function GridViewer(props: {
     trans: TFunction<"translation", undefined>
 }) {
     let [data, setData] = useState<IViewerData[]>([])
+    let [light, setIsLight] = useState(document.body.getAttribute('theme-mode') != 'dark')
+    useEffect(() => {
+        let theme = document.body.getAttribute('theme-mode')
+        if (theme == 'dark') {
+            setIsLight(false)
+        }
+        else {
+            setIsLight(true)
+        }
+        bitable.bridge.onThemeChange((e) => {
+            setIsLight(e.data.theme.toLocaleLowerCase() != 'dark')
+        })
+    }, [document.body.getAttribute('theme-mode')])
     useEffect(() => {
         async function fetchData() {
             let data: IViewerData[] = []
@@ -69,7 +82,7 @@ export function GridViewer(props: {
                 <List.Item onClick={() => { window.open(item.link) }} style={{ width: "100%", display: "grid", justifyItems: "center" }}>
                     <Space vertical style={{ cursor: "pointer", width: "100%", display: "grid", justifyItems: "center" }}>
                         <Avatar shape="square" style={{ borderRadius: 12 }} src={item.icon}></Avatar>
-                        <p>{toMinText(8, item.text)}</p>
+                        <p style={{ color: light ? 'black' : 'white' }}>{toMinText(8, item.text)}</p>
                     </Space>
                 </List.Item>
             )}
