@@ -5,12 +5,12 @@
 .main {
     display: flex;
     box-sizing: border-box;
-    min-height: 100vh;
+    //min-height: 100vh;
     --number-gap: 4.2vmax;
 }
 
 .main-config {
-    height: 100vh;
+    //height: 100vh;
     border-top: var(--divider) 0.5px solid;
     --number-gap: 2.1vmax;
 }
@@ -25,6 +25,14 @@
     min-width: 0;
 }
 
+.content {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
 .config-panel {
     width: 340px;
     overflow: scroll;
