@@ -8,7 +8,7 @@ import classnames from 'classnames'
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next/typescript/t';
 import { Item } from '../Item';
-import { TypeSelector } from '../TypeSelector';
+import { IconSelect } from '../TypeSelector';
 import { TableSelector } from '../TableSelector'
 import { ViewSelector } from '../ViewSelector';
 import { CategorySelector } from '../CategorySelector';
@@ -86,9 +86,9 @@ export default function UrlGroup() {
       <div className='content'>
         {
           config.type == "row" ?
-          <RowViewer config={config} trans={t} />
-          :
-          <GridViewer config={config} trans={t} />
+            <RowViewer config={config} trans={t} />
+            :
+            <GridViewer config={config} trans={t} />
         }
       </div>
       {
@@ -124,15 +124,28 @@ function ConfigPanel(props: {
             {t('label.display.viewtype')}
           </div>
         }>
-          <TypeSelector
-            onChange={(e) => {
+          <IconSelect
+            onChange={(e: 'grid'|'row') => {
               setConfig({
                 ...config,
                 type: e
               })
             }}
-            trans={t}
-            defaultSection={config.type}
+            optionList={[
+              {
+                label: t('label.display.viewtype.grid'),
+                value: 'grid',
+                icon: 'grid_inactive.svg',
+                selectedIcon: 'grid_active.svg',
+              },
+              {
+                label: t('label.display.viewtype.row'),
+                value: 'row',
+                icon: 'row_inactive.svg',
+                selectedIcon: 'row_active.svg',
+              }
+            ]}
+            value={config.type}
           />
         </Item>
         <Item label={
