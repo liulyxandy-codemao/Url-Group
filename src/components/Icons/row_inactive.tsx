@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export default function () {
-    let [light, setIsLight] = useState(true)
+    let [light, setIsLight] = useState(document.body.getAttribute('theme-mode') != 'dark')
     useEffect(() => {
         let theme = document.body.getAttribute('theme-mode')
         if (theme == 'dark') {
