@@ -37,6 +37,25 @@
     padding: 20px;
     box-sizing: border-box;
 }
+.config-panel::-webkit-scrollbar {
+    width: 0em;
+}
+
+.config-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.config-panel::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.config-panel::-webkit-scrollbar-horizontal {
+    height: 0em;
+}
+
+.config-panel::-webkit-scrollbar-thumb-horizontal {
+    background: transparent;
+}
 
 .form {
     flex-grow: 1;
