@@ -6,3 +6,26 @@ p {
     height: 40px;
     width: 40px;
 }
+
+.semi-row-flex {
+    display: grid;
+    row-gap: 20px;
+    column-gap: 10px;
+    width: 96%;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    justify-items: center;
+}
+
+.semi-spin-children {
+    display: grid;
+    justify-items: center;
+}
+
+.semi-col {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+}
+.semi-list-empty {
+    grid-column: 1 / -1;
+}

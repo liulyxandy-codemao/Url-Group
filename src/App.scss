@@ -282,3 +282,24 @@ html,
 body {
     background: transparent !important;
 }
+/* 隐藏垂直滚动条 */
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+/* 隐藏水平滚动条 */
+body::-webkit-scrollbar-horizontal {
+    height: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb-horizontal {
+    background: transparent;
+}

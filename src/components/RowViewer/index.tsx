@@ -46,11 +46,13 @@ export function RowViewer(props: {
     }, [props]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
     return (
         <List
+            style={{ width: "100%" }}
             emptyContent={props.trans("label.empty")}
             dataSource={data}
             renderItem={item => (
                 <List.Item
-                    header={<Avatar shape="square" style={{borderRadius: 12}} src={item.icon}></Avatar>}
+                    style={{ width: "100%" }}
+                    header={<Avatar shape="square" style={{ borderRadius: 12 }} src={item.icon}></Avatar>}
                     main={<p>{toMinText(12, item.text)}</p>}
                     extra={
                         <Button theme='solid' size='small' type='primary' onClick={() => { window.open(item.link) }}>打开</Button>
