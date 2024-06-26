@@ -5,6 +5,7 @@ export function toNormalText(obj:
         [key: string]: any
     }[]
 ) {
+    console.log(obj)
     let ans = ''
     for (let element of obj) {
         if (element.link) {

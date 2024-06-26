@@ -1,6 +1,6 @@
 import './style.scss';
 import React from 'react';
-import { bitable, dashboard, DashboardState, IConfig } from "@lark-base-open/js-sdk";
+import { bitable, dashboard, DashboardState, FieldType, IConfig } from "@lark-base-open/js-sdk";
 import { Button } from '@douyinfe/semi-ui';
 import { useState, useEffect, useRef } from 'react';
 import { useConfig } from '../../hooks';
@@ -210,6 +210,7 @@ function ConfigPanel(props: {
             defaultSection={config.titleRow}
             tableId={config.table}
             viewId={config.view}
+            availableFieldTypes={[FieldType.Text, FieldType.SingleSelect, FieldType.Formula]}
           />
         </Item>
         <Item label={
@@ -227,6 +228,7 @@ function ConfigPanel(props: {
             defaultSection={config.iconRow}
             tableId={config.table}
             viewId={config.view}
+            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, FieldType.Attachment, FieldType.Formula]}
           />
         </Item>
         <Item label={
@@ -244,6 +246,7 @@ function ConfigPanel(props: {
             defaultSection={config.linkRow}
             tableId={config.table}
             viewId={config.view}
+            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, FieldType.Attachment, FieldType.Formula]}
           />
         </Item>
       </div>

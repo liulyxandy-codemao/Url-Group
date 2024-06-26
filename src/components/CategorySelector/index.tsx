@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Select } from '@douyinfe/semi-ui';
 import { OptionProps } from '@douyinfe/semi-ui/lib/es/select';
-import { base } from '@lark-base-open/js-sdk';
+import { base, FieldType } from '@lark-base-open/js-sdk';
 
 interface CategorySelectorProps {
     onChange: (type: string) => void;
     defaultSection: string | null;
     tableId: string | null;
     viewId: string | null;
+    availableFieldTypes?: FieldType[];
 }
 
 export function CategorySelector(props: CategorySelectorProps) {
@@ -19,6 +20,14 @@ export function CategorySelector(props: CategorySelectorProps) {
             const categoryList = await (await (await base.getTableById(props.tableId)).getViewById(props.viewId)).getFieldMetaList();
             const options = categoryList.map(async (category) => {
                 const name = category.name;
+                console.log(name, props.availableFieldTypes && !props.availableFieldTypes.includes(category.type))
+                if(name == 'ces' && (props.availableFieldTypes && !props.availableFieldTypes.includes(category.type)) == false){
+                    console.log(props.availableFieldTypes, props.availableFieldTypes?.includes(category.type), category.type)
+                }
+                if (props.availableFieldTypes && !props.availableFieldTypes.includes(category.type)){
+                    //console.log(category.type, props.availableFieldTypes)
+                    return { value: category.id, label: name, disabled: true };
+                }
                 return { value: category.id, label: name };
             });
 
@@ -40,6 +49,7 @@ export function CategorySelector(props: CategorySelectorProps) {
         onChange(r)
     }
     defaultSection = defaultSection == null ? '' : defaultSection
+    //console.log(optionList)
     return (
         <Select
             placeholder="请选择字段"
