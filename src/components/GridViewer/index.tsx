@@ -48,7 +48,7 @@ export function GridViewer(props: {
                 const link = await link_cell.getValue();
                 data.push({
                     text: toNormalText(title),
-                    icon: toNormalText(icon),
+                    icon: toNormalText(icon/*,"icon"*/),
                     link: toNormalText(link)
                 })
             }

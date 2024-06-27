@@ -228,7 +228,7 @@ function ConfigPanel(props: {
             defaultSection={config.iconRow}
             tableId={config.table}
             viewId={config.view}
-            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, FieldType.Attachment, FieldType.Formula]}
+            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, /*FieldType.Attachment, */FieldType.Formula]}
           />
         </Item>
         <Item label={
@@ -246,7 +246,7 @@ function ConfigPanel(props: {
             defaultSection={config.linkRow}
             tableId={config.table}
             viewId={config.view}
-            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, FieldType.Attachment, FieldType.Formula, FieldType.Url]}
+            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, /*FieldType.Attachment, */FieldType.Formula, FieldType.Url]}
           />
         </Item>
       </div>

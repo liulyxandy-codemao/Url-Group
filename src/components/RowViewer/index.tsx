@@ -1,6 +1,6 @@
 import { Avatar, Button, ButtonGroup, List } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
-import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
+import { base, dashboard, bitable} from '@lark-base-open/js-sdk';
 import { toMinText, toNormalText } from "../../utils";
 import './row.scss'
 import { TFunction } from "i18next";
@@ -40,15 +40,17 @@ export function RowViewer(props: {
             let data: IViewerData[] = []
             let recordList = await (await bitable.base.getTableById(props.config.table!)).getRecordList()
             for (const record of recordList) {
+
                 const title_cell = await record.getCellByField(props.config.titleRow!)
                 const title = await title_cell.getValue();
                 const icon_cell = await record.getCellByField(props.config.iconRow!)
                 const icon = await icon_cell.getValue();
+              //  const attachmentUrls = await (await (bitable.base.getTableById(props.config.table!))).getField(icon_cell.getFieldId()).getAttachmentUrls(icon);
                 const link_cell = await record.getCellByField(props.config.linkRow!)
                 const link = await link_cell.getValue();
                 data.push({
                     text: toNormalText(title),
-                    icon: toNormalText(icon),
+                    icon: toNormalText(icon/*,"icon",attachmentUrls*/),
                     link: toNormalText(link)
                 })
             }
