@@ -11,7 +11,7 @@ export function IconSelect({ optionList, onChange, value }: any) {
       <div className="iconSelectContainer">
         {
           optionList.map((item: any) => {
-            const prefix = isDark ? '/assets/dark_' : '/assets/'
+            const prefix = isDark ? './assets/dark_' : './assets/'
             if (item.value === value)
               return (
                 <div className="iconSelectItem selected" onClick={(e) => onChange(item.value)}>
