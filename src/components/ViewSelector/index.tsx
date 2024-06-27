@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Select } from '@douyinfe/semi-ui';
 import { OptionProps } from '@douyinfe/semi-ui/lib/es/select';
 import { base } from '@lark-base-open/js-sdk';
+import { useTranslation } from 'react-i18next';
 
 interface ViewSelectorProps {
     onChange: (type: string) => void;
@@ -11,7 +12,7 @@ interface ViewSelectorProps {
 
 export function ViewSelector(props: ViewSelectorProps) {
     const [optionList, setOptionList] = useState<OptionProps[]>([]);
-
+    let { t } = useTranslation();
     useEffect(() => {
         async function fetchViewData() {
             if(props.tableId == null) return
@@ -41,7 +42,7 @@ export function ViewSelector(props: ViewSelectorProps) {
     defaultSection = defaultSection == null ? '' : defaultSection
     return (
         <Select
-            placeholder="请选择视图"
+            placeholder={t("label.display.select.view")}
             style={{ width: 300 }}
             optionList={optionList}
             onChange={changeHandle}

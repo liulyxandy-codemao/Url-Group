@@ -7,6 +7,7 @@
   "label.display.select.title": "タイトル列",
   "label.display.select.link": "リンク列",
   "label.display.select.icon": "アイコン列",
+  "label.display.select.category": "フィールドを選択",
   "label.empty": "データなし",
   "confirm": "確認"
 }

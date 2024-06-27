@@ -7,6 +7,7 @@
   "label.display.select.title": "Title Column",
   "label.display.select.link": "Link Column",
   "label.display.select.icon": "Icon Column",
+  "label.display.select.category": "Select Category",
   "label.empty": "No Data Available",
   "confirm": "Confirm"
 }
