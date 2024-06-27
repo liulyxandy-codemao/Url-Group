@@ -45,8 +45,8 @@ export function RowViewer(props: {
                 const title = await title_cell.getValue();
                 const icon_cell = await record.getCellByField(props.config.iconRow!)
                 const icon = await icon_cell.getValue();
-
-              const link_cell = await record.getCellByField(props.config.linkRow!)
+              //  const attachmentUrls = await (await (bitable.base.getTableById(props.config.table!))).getField(icon_cell.getFieldId()).getAttachmentUrls(icon);
+                const link_cell = await record.getCellByField(props.config.linkRow!)
                 const link = await link_cell.getValue();
                 data.push({
                     text: toNormalText(title),

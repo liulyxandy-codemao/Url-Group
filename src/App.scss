@@ -303,3 +303,15 @@ body::-webkit-scrollbar-horizontal {
 body::-webkit-scrollbar-thumb-horizontal {
     background: transparent;
 }
+
+.main-config {
+    height: 100vh;
+}
+.semi-select-option-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+.semi-select-option-list-wrapper {
+    max-width: 280px;
+}

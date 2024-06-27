@@ -212,12 +212,12 @@ function ConfigPanel(props: {
             viewId={config.view}
             availableFieldTypes={[FieldType.Text, FieldType.SingleSelect, FieldType.Formula]}
           />
-        </Item>
+        </Item >
         <Item label={
           <div className='select-icon'>
             {t('label.display.select.icon')}
           </div>
-        }>
+        } >
           <CategorySelector
             onChange={(e) => {
               setConfig({
