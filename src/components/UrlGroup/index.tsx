@@ -228,7 +228,7 @@ function ConfigPanel(props: {
             defaultSection={config.iconRow}
             tableId={config.table}
             viewId={config.view}
-            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, /*FieldType.Attachment, */FieldType.Formula]}
+            availableFieldTypes={[FieldType.Text, FieldType.SingleLink, /*FieldType.Attachment, */FieldType.Formula, FieldType.Url]}
           />
         </Item>
         <Item label={
