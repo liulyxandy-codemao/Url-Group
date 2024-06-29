@@ -17,13 +17,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid var(--select-default);
+    border: 1px solid var(--semi-color-stroke);
     color: var(--text-shallow-2);
     cursor: pointer;
 }
 
 .iconSelectItem.selected {
-    border: 2px solid var(--select-selected);
+    border: 1px solid var(--semi-color-primary);
     color: var(--select-selected);
 }
 
