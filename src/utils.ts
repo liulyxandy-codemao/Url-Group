@@ -8,20 +8,31 @@ export function toNormalText(obj:
     console.log(obj)
 
     let ans = ''
-    for (let element of obj) {
-        /*
-        if (way == "icon") {
-            if (element["type"].includes("image")) {
-                ans += element.text
-                console.log(record)
-            } }else {
-             */
+    if (!Array.isArray(obj)) {
+        ans += "NULL"
+    }
+    else {
+        for (let element of obj) {
+            /*
+            if (way == "icon") {
+                if (element["type"].includes("image")) {
+                    ans += element.text
+                    console.log(record)
+                } }else {
+                 */
             if (element.link) {
                 ans += element.link
             }
-            else { ans += element.text }
+            else {
+                console.log(JSON.stringify(element))
+                if (element.text) {
+                    ans += element.text
+                } else {
+                    ans += "NULL"
+                }
+            }
         }
-   
+    }
     return ans
 }
 
