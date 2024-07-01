@@ -65,9 +65,9 @@ export default function UrlGroup() {
     if (timer.current) {
       clearTimeout(timer.current)
     }
-    const { customConfig } = res;
-    if (customConfig) {
-      setConfig(customConfig as any);
+    const { dataConditions } = res;
+    if (dataConditions) {
+      setConfig(dataConditions as any);
       timer.current = setTimeout(() => {
         //自动化发送截图。 预留3s给浏览器进行渲染，3s后告知服务端可以进行截图了（对域名进行了拦截，此功能仅上架部署后可用）。
         dashboard.setRendered();
