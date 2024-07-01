@@ -127,7 +127,7 @@ function ConfigPanel(props: {
   const onSaveConfig = () => {
     dashboard.saveConfig({
       customConfig: config,
-      dataConditions: [],
+      dataConditions: config,
     } as any)
   }
 
