@@ -35,31 +35,41 @@ export function RowViewer(props: {
             setIsLight(e.data.theme.toLocaleLowerCase() != 'dark')
         })
     }, [document.body.getAttribute('theme-mode')])
-    useEffect(() => {
-        async function fetchData() {
-            let data: IViewerData[] = []
-            let recordList = await (await bitable.base.getTableById(props.config.table!)).getRecordList()
-            for (const record of recordList) {
+    async function fetchData() {
+        let data: IViewerData[] = []
+        let recordList = await (await bitable.base.getTableById(props.config.table!)).getRecordList()
+        for (const record of recordList) {
 
-                const title_cell = await record.getCellByField(props.config.titleRow!)
-                const title = await title_cell.getValue();
-                const icon_cell = await record.getCellByField(props.config.iconRow!)
-                const icon = await icon_cell.getValue();
-                //  const attachmentUrls = await (await (bitable.base.getTableById(props.config.table!))).getField(icon_cell.getFieldId()).getAttachmentUrls(icon);
-                const link_cell = await record.getCellByField(props.config.linkRow!)
-                const link = await link_cell.getValue();
-                data.push({
-                    text: toNormalText(title),
-                    icon: toNormalText(icon/*,"icon",attachmentUrls*/),
-                    link: toNormalText(link)
-                })
-            }
-            setData(data)
+            const title_cell = await record.getCellByField(props.config.titleRow!)
+            const title = await title_cell.getValue();
+            const icon_cell = await record.getCellByField(props.config.iconRow!)
+            const icon = await icon_cell.getValue();
+            //  const attachmentUrls = await (await (bitable.base.getTableById(props.config.table!))).getField(icon_cell.getFieldId()).getAttachmentUrls(icon);
+            const link_cell = await record.getCellByField(props.config.linkRow!)
+            const link = await link_cell.getValue();
+            data.push({
+                text: toNormalText(title),
+                icon: toNormalText(icon/*,"icon",attachmentUrls*/),
+                link: toNormalText(link)
+            })
         }
+        setData(data)
+    }
+    useEffect(() => {
+
 
         fetchData();
-    }, [props]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
 
+
+    }, [props]); // 空依赖数组意味着这个effect只会在组件挂载后运行一次
+    useEffect(() => {
+        const update = dashboard.onConfigChange(() => {
+            fetchData()
+        });
+        return () => {
+            update();
+        }
+    }, []);
     const placeholder = (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', rowGap: '30px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'center', columnGap: '30px' }}>
