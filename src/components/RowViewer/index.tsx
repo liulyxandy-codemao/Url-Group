@@ -1,6 +1,6 @@
 import { Avatar, Button, ButtonGroup, List, Skeleton } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
-import { base, dashboard, bitable } from '@lark-base-open/js-sdk';
+import { base, dashboard, bitable, FieldType, IField, IOpenAttachment, IAttachmentField } from '@lark-base-open/js-sdk';
 import { toMinText, toNormalText } from "../../utils";
 import './row.scss'
 import { TFunction } from "i18next";
@@ -43,13 +43,50 @@ export function RowViewer(props: {
             const title_cell = await record.getCellByField(props.config.titleRow!)
             const title = await title_cell.getValue();
             const icon_cell = await record.getCellByField(props.config.iconRow!)
-            const icon = await icon_cell.getValue();
-            //  const attachmentUrls = await (await (bitable.base.getTableById(props.config.table!))).getField(icon_cell.getFieldId()).getAttachmentUrls(icon);
+            let icon_field = await (
+                await bitable.base.getTableById(props.config.table!)
+            ).getFieldById(props.config.iconRow!)
+            let icon_type = await (
+                icon_field
+            ).getType()
+            let icon = [{
+                text: ""
+            }]
+            if (icon_type == FieldType.Attachment){
+                let urls = await (icon_field as IAttachmentField).getAttachmentUrls(record.id)
+                icon = [{
+                    text: urls[0]
+                }]
+            }
+            else{
+                icon = await icon_cell.getValue();
+            }
+            
+            
             const link_cell = await record.getCellByField(props.config.linkRow!)
-            const link = await link_cell.getValue();
+            let link_field = await (
+                await bitable.base.getTableById(props.config.table!)
+            ).getFieldById(props.config.linkRow!)
+            let link_type = await (
+                link_field
+            ).getType()
+            let link = [{
+                text: ""
+            }]
+            console.log(link_type, FieldType.Attachment)
+            if(link_type == FieldType.Attachment){
+                let urls = await (link_field as IAttachmentField).getAttachmentUrls(record.id)
+                console.log('url', urls)
+                link = [{
+                    text: urls[0]
+                }]
+            }
+            else{
+                link = await link_cell.getValue();
+            }
             data.push({
                 text: toNormalText(title),
-                icon: toNormalText(icon/*,"icon",attachmentUrls*/),
+                icon: toNormalText(icon),
                 link: toNormalText(link)
             })
         }
