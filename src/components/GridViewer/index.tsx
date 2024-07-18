@@ -37,6 +37,9 @@ export function GridViewer(props: {
     }, [document.body.getAttribute('theme-mode')])
     async function fetchData() {
         let data: IViewerData[] = []
+        if(props.config.table == null){
+            return
+        }
         let recordList = await (await bitable.base.getTableById(props.config.table!)).getRecordList()
         for (const record of recordList) {
             const title_cell = await record.getCellByField(props.config.titleRow!)
@@ -72,10 +75,8 @@ export function GridViewer(props: {
             let link = [{
                 text: ""
             }]
-            console.log(link_type, FieldType.Attachment)
             if(link_type == FieldType.Attachment){
                 let urls = await (link_field as IAttachmentField).getAttachmentUrls(record.id)
-                console.log('url', urls)
                 link = [{
                     text: urls[0]
                 }]

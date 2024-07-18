@@ -5,7 +5,6 @@ export function toNormalText(obj:
         [key: string]: any
     }[]
 ) {
-    console.log(obj)
 
     let ans = ''
     if (!Array.isArray(obj)) {
@@ -17,7 +16,6 @@ export function toNormalText(obj:
                 ans += element.link
             }
             else {
-                console.log(JSON.stringify(element))
                 if (element.text) {
                     ans += element.text
                 } else {
