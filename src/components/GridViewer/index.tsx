@@ -37,7 +37,7 @@ export function GridViewer(props: {
     }, [document.body.getAttribute('theme-mode')])
     async function fetchData() {
         let data: IViewerData[] = []
-        if(props.config.table == null){
+        if (props.config.table == null) {
             return
         }
         let recordList = await (await bitable.base.getTableById(props.config.table!)).getRecordList()
@@ -54,17 +54,21 @@ export function GridViewer(props: {
             let icon = [{
                 text: ""
             }]
-            if (icon_type == FieldType.Attachment){
-                let urls = await (icon_field as IAttachmentField).getAttachmentUrls(record.id)
-                icon = [{
-                    text: urls[0]
-                }]
+            if (icon_type == FieldType.Attachment) {
+                try {
+                    let urls = await (icon_field as IAttachmentField).getAttachmentUrls(record.id)
+                    icon = [{
+                        text: urls[0]
+                    }]
+                } catch (e) {
+                    console.warn("Failed to fetch icon")
+                }
             }
-            else{
+            else {
                 icon = await icon_cell.getValue();
             }
-            
-            if (!Array.isArray(icon) && !Array.isArray(title)){
+
+            if (!Array.isArray(icon) && !Array.isArray(title)) {
                 continue
             }
             const link_cell = await record.getCellByField(props.config.linkRow!)
@@ -77,13 +81,17 @@ export function GridViewer(props: {
             let link = [{
                 text: ""
             }]
-            if(link_type == FieldType.Attachment){
-                let urls = await (link_field as IAttachmentField).getAttachmentUrls(record.id)
-                link = [{
-                    text: urls[0]
-                }]
+            if (link_type == FieldType.Attachment) {
+                try {
+                    let urls = await (link_field as IAttachmentField).getAttachmentUrls(record.id)
+                    link = [{
+                        text: urls[0]
+                    }]
+                } catch (e) {
+                    console.warn("Failed to fetch link")
+                }
             }
-            else{
+            else {
                 link = await link_cell.getValue();
             }
             data.push({

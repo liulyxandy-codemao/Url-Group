@@ -56,10 +56,14 @@ export function RowViewer(props: {
                 text: ""
             }]
             if (icon_type == FieldType.Attachment){
-                let urls = await (icon_field as IAttachmentField).getAttachmentUrls(record.id)
-                icon = [{
-                    text: urls[0]
-                }]
+                try {
+                    let urls = await (icon_field as IAttachmentField).getAttachmentUrls(record.id)
+                    icon = [{
+                        text: urls[0]
+                    }]
+                } catch (e) {
+                    console.warn("Failed to fetch icon")
+                }
             }
             else{
                 icon = await icon_cell.getValue();
@@ -79,10 +83,14 @@ export function RowViewer(props: {
                 text: ""
             }]
             if(link_type == FieldType.Attachment){
-                let urls = await (link_field as IAttachmentField).getAttachmentUrls(record.id)
-                link = [{
-                    text: urls[0]
-                }]
+                try {
+                    let urls = await (link_field as IAttachmentField).getAttachmentUrls(record.id)
+                    link = [{
+                        text: urls[0]
+                    }]
+                } catch (e) {
+                    console.warn("Failed to fetch link")
+                }
             }
             else{
                 link = await link_cell.getValue();
