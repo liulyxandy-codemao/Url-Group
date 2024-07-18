@@ -42,7 +42,7 @@ export function RowViewer(props: {
         }
         let recordList = await (await bitable.base.getTableById(props.config.table!)).getRecordList()
         for (const record of recordList) {
-
+            
             const title_cell = await record.getCellByField(props.config.titleRow!)
             const title = await title_cell.getValue();
             const icon_cell = await record.getCellByField(props.config.iconRow!)
@@ -65,7 +65,9 @@ export function RowViewer(props: {
                 icon = await icon_cell.getValue();
             }
             
-            
+            if (!Array.isArray(icon) && !Array.isArray(title)){
+                continue
+            }
             const link_cell = await record.getCellByField(props.config.linkRow!)
             let link_field = await (
                 await bitable.base.getTableById(props.config.table!)

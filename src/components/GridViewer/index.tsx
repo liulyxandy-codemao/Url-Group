@@ -64,7 +64,9 @@ export function GridViewer(props: {
                 icon = await icon_cell.getValue();
             }
             
-            
+            if (!Array.isArray(icon) && !Array.isArray(title)){
+                continue
+            }
             const link_cell = await record.getCellByField(props.config.linkRow!)
             let link_field = await (
                 await bitable.base.getTableById(props.config.table!)

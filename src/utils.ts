@@ -8,7 +8,7 @@ export function toNormalText(obj:
 
     let ans = ''
     if (!Array.isArray(obj)) {
-        ans += "NULL"
+        return ans
     }
     else {
         for (let element of obj) {
